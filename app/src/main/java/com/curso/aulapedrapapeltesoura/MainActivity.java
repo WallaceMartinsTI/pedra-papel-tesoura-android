@@ -51,24 +51,46 @@ public class MainActivity extends AppCompatActivity {
         return escolhaApp;
     };
 
+    int pontosApp = 0;
+    int pontosJogador = 0;
+
     private void verificarGanhador(String escolhaUsuario) {
         String escolhaApp = gerarEscolhaAleatoriaApp();
-        TextView textoResultado = findViewById(R.id.text_resultado);
+
+        TextView campoPontosApp = findViewById(R.id.pontos_app);
+        TextView campoPontosJogador = findViewById(R.id.pontos_jogador);
+
+        TextView textEmpate = findViewById(R.id.text_empate);
 
         if(
             (escolhaApp == "pedra" && escolhaUsuario == "tesoura") ||
             (escolhaApp == "papel" && escolhaUsuario == "pedra") ||
             (escolhaApp == "tesoura" && escolhaUsuario == "papel")
         ) {
-            textoResultado.setText("Você perdeu :(");
+            campoPontosApp.setText(Integer.toString(++pontosApp));
+            textEmpate.setText("");
         } else if(
             (escolhaUsuario == "pedra" && escolhaApp == "tesoura") ||
             (escolhaUsuario == "papel" && escolhaApp == "pedra") ||
             (escolhaUsuario == "tesoura" && escolhaApp == "papel")
         ) {
-            textoResultado.setText("Você Ganhou!! :)");
+            campoPontosJogador.setText(Integer.toString(++pontosJogador));
+            textEmpate.setText("");
         } else {
-            textoResultado.setText("Empatados ;)");
+            textEmpate.setText("Empatou!");
         };
+    };
+
+    public void limparPontos(View view) {
+        TextView campoPontosApp = findViewById(R.id.pontos_app);
+        TextView campoPontosJogador = findViewById(R.id.pontos_jogador);
+        TextView textEmpate = findViewById(R.id.text_empate);
+        campoPontosApp.setText(Integer.toString(0));
+        campoPontosJogador.setText(Integer.toString(0));
+        textEmpate.setText("");
+        ImageView imagemApp = findViewById(R.id.image_app);
+        imagemApp.setImageResource(R.drawable.padrao);
+        this.pontosApp = 0;
+        this.pontosJogador = 0;
     };
 }
