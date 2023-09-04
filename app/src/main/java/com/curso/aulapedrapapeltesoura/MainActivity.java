@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     };
 
     private String gerarEscolhaAleatoriaApp() {
+
         String[] opcoes = {"pedra", "papel", "tesoura"};
         int numeroAleatorio = new Random().nextInt(3);
 
