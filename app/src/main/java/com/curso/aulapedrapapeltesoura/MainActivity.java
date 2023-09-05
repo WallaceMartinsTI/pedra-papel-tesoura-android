@@ -82,14 +82,19 @@ public class MainActivity extends AppCompatActivity {
     };
 
     public void limparPontos(View view) {
+        // Get fields
         TextView campoPontosApp = findViewById(R.id.pontos_app);
         TextView campoPontosJogador = findViewById(R.id.pontos_jogador);
         TextView textEmpate = findViewById(R.id.text_empate);
+        ImageView imagemApp = findViewById(R.id.image_app);
+
+        // Send data to layout
+        imagemApp.setImageResource(R.drawable.padrao);
         campoPontosApp.setText(Integer.toString(0));
         campoPontosJogador.setText(Integer.toString(0));
         textEmpate.setText("");
-        ImageView imagemApp = findViewById(R.id.image_app);
-        imagemApp.setImageResource(R.drawable.padrao);
+
+        // Reset pontuation
         this.pontosApp = 0;
         this.pontosJogador = 0;
     };
